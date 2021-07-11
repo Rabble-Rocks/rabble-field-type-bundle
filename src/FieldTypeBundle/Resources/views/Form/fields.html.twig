@@ -1,0 +1,57 @@
+{% extends 'bootstrap_4_layout.html.twig' %}
+{% block rabble_image_widget %}
+    {{ form_errors(form.file) }}
+    {% set image = form.vars.image_uri %}
+    {% if image is not null %}
+        {% if '.svg' is same as(image|slice(-4)) %}
+            {% set image_thumb = image %}
+        {% else %}
+            {% set image_thumb = image|imagine_filter('rabble_square') %}
+        {% endif %}
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-sm-8">
+                {{ form_widget(form.file) }}
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-inline-block">
+                <img src="{{ image_thumb }}" alt="image" class="img-thumbnail"/>
+            </div>
+        </div>
+    {% else %}
+        {{ form_widget(form.file) }}
+    {% endif %}
+{% endblock %}
+
+{% block rabble_collection_row %}
+    <div class="rabble-collection form-group" data-items="{{ form.children|length }}">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {% if allow_add %}
+            <button class="btn btn-primary collection-add" data-prototype-name="{{ prototype_name }}"><i class="fa fa-plus-circle"></i> Add</button>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block form_row %}
+    {% if form.parent.vars.type|default == 'collection' %}
+        <div class="position-relative collection-item" data-name="{{ form.vars.name }}" data-fullname="{{ form.vars.full_name }}">
+            {% include '@RabbleAdmin/Ui/Atom/sort-handle.html.twig' %}
+            <div class="card mb-3">
+                <a class="btn btn-primary shadow-none bgc-grey-500 border-0 bdrs-0 position-relative" data-toggle="collapse" href="#collapse-{{ id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <strong class="py-2">
+                        {{ label }}
+                    </strong>
+                    {% if form.parent.vars.allow_delete %}
+                        <button class="btn btn-sm btn-danger collection-remove float-right z-1 position-absolute bdrs-0" style="right:0; top:0; bottom:0">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    {% endif %}
+                </a>
+                <div class="card-body collapse {% if data is null%}show{% else %}hide{% endif %}" style="transition: none;" id="collapse-{{ id }}">
+                    {{ parent() }}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

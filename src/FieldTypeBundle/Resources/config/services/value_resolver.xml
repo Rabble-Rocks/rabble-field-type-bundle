@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="rabble_field_type.value_resolver_collection" class="Rabble\FieldTypeBundle\ValueResolver\ValueResolverCollection" />
+        <service id="Rabble\FieldTypeBundle\ValueResolver\ValueResolverCollection" alias="rabble_field_type.value_resolver_collection" />
+        <service id="rabble_field_type.value_resolver.image" class="Rabble\FieldTypeBundle\ValueResolver\ImageValueResolver">
+            <argument type="service" id="rabble_field_type.vich_uploader.property_mapping_factory"/>
+            <tag name="rabble_field_type.value_resolver"/>
+        </service>
+        <service id="rabble_field_type.value_resolver.collection" class="Rabble\FieldTypeBundle\ValueResolver\CollectionValueResolver">
+            <argument type="service" id="rabble_field_type.value_resolver_collection"/>
+            <tag name="rabble_field_type.value_resolver"/>
+        </service>
+    </services>
+</container>

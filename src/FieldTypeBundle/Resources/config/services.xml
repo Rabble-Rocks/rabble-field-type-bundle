@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="services/form.xml"/>
+        <import resource="services/twig.xml"/>
+        <import resource="services/vich_uploader.xml"/>
+        <import resource="services/value_resolver.xml"/>
+    </imports>
+    <services>
+        <service id="rabble_field_type.field_type_mapping_collection" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMappingCollection"/>
+        <service id="rabble_field_type.string" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMapping">
+            <argument>string</argument>
+            <argument>Rabble\FieldTypeBundle\FieldType\StringType</argument>
+            <tag>rabble_field_type_mapping</tag>
+        </service>
+        <service id="rabble_field_type.text_area" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMapping">
+            <argument>textarea</argument>
+            <argument>Rabble\FieldTypeBundle\FieldType\TextareaType</argument>
+            <tag>rabble_field_type_mapping</tag>
+        </service>
+        <service id="rabble_field_type.submit" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMapping">
+            <argument>submit</argument>
+            <argument>Rabble\FieldTypeBundle\FieldType\SubmitType</argument>
+            <tag>rabble_field_type_mapping</tag>
+        </service>
+        <service id="rabble_field_type.image" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMapping">
+            <argument>image</argument>
+            <argument>Rabble\FieldTypeBundle\FieldType\ImageType</argument>
+            <tag>rabble_field_type_mapping</tag>
+        </service>
+        <service id="rabble_field_type.collection" class="Rabble\FieldTypeBundle\FieldType\Mapping\FieldTypeMapping">
+            <argument>collection</argument>
+            <argument>Rabble\FieldTypeBundle\FieldType\CollectionType</argument>
+            <tag>rabble_field_type_mapping</tag>
+        </service>
+    </services>
+</container>

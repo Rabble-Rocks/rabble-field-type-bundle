@@ -1,0 +1,27 @@
+{
+    "name": "rabble/field-type-bundle",
+    "type": "symfony-bundle",
+    "description": "A bundle for defining field types to be used dynamically.",
+    "keywords": ["rabble", "admin", "form", "field"],
+    "homepage": "https://rabble.rocks",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rachel Snijders",
+            "email": "rainbowvision.bn@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "rabble/admin-bundle": "*",
+        "vich/uploader-bundle": "^1.14"
+    },
+    "autoload": {
+        "psr-4": { "Rabble\\FieldTypeBundle\\": "src/FieldTypeBundle" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
