@@ -1,4 +1,4 @@
-{% extends 'bootstrap_4_layout.html.twig' %}
+{% extends 'bootstrap_5_layout.html.twig' %}
 {% block rabble_image_widget %}
     {{ form_errors(form.file) }}
     {% set image = form.vars.image_uri %}
@@ -36,7 +36,7 @@
         <div class="position-relative collection-item" data-name="{{ form.vars.name }}" data-fullname="{{ form.vars.full_name }}">
             {% include '@RabbleAdmin/Ui/Atom/sort-handle.html.twig' %}
             <div class="card mb-3">
-                <a class="btn btn-primary shadow-none bgc-grey-500 border-0 bdrs-0 position-relative" data-toggle="collapse" href="#collapse-{{ id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-primary shadow-none bgc-grey-500 border-0 bdrs-0 position-relative" data-bs-toggle="collapse" href="#collapse-{{ id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <strong class="py-2">
                         {{ label }}
                     </strong>
@@ -46,7 +46,7 @@
                         </button>
                     {% endif %}
                 </a>
-                <div class="card-body collapse {% if data is null%}show{% else %}hide{% endif %}" style="transition: none;" id="collapse-{{ id }}">
+                <div class="card-body ps-4 collapse {% if data is null%}show{% else %}hide{% endif %}" style="transition: none;" id="collapse-{{ id }}">
                     {{ parent() }}
                 </div>
             </div>
