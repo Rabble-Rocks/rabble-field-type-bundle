@@ -19,7 +19,7 @@ class CollectionValueResolver implements ValueResolverInterface
      * @param mixed                             $value
      * @param CollectionType|FieldTypeInterface $fieldType
      */
-    public function resolve($value, FieldTypeInterface $fieldType): array
+    public function resolve($value, FieldTypeInterface $fieldType, ?string $target = null): array
     {
         Assert::isArray($value);
         $data = [];

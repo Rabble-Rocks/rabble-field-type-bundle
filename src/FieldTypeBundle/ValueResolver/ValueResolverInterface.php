@@ -11,7 +11,7 @@ interface ValueResolverInterface
      *
      * @return mixed
      */
-    public function resolve($value, FieldTypeInterface $fieldType);
+    public function resolve($value, FieldTypeInterface $fieldType, ?string $target = null);
 
     public function supports(FieldTypeInterface $fieldType): bool;
 }

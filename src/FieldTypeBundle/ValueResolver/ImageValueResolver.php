@@ -22,7 +22,7 @@ class ImageValueResolver implements ValueResolverInterface
      *
      * @return mixed
      */
-    public function resolve($value, FieldTypeInterface $fieldType)
+    public function resolve($value, FieldTypeInterface $fieldType, ?string $target = null)
     {
         $mappingName = $fieldType->getOption('mapping');
         $mapping = $this->propertyMappingFactory->fromMappingName($mappingName);
